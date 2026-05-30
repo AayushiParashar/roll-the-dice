@@ -1,0 +1,34 @@
+btnHold.addEventListener('click', function () {
+  // Update total score from current score
+  if (activePlayer == 0) {
+    // increment logical score of P0 with currentScore
+    scores[0] = scores[0] + currentScore;
+
+    // set the logical P0 score to node score variable
+    score0El.textContent = scores[0];
+
+    // reset :) the current score logical variable
+    currentScore = 0;
+
+    // set logical current score to node current score variable
+    current0El.textContent = currentScore;
+  } else {
+    scores[1] = scores[1] + currentScore;
+    score1El.textContent = scores[1];
+    currentScore = 0;
+    current0El.textContent = currentScore;
+  }
+
+  // make current score 0
+  currentScore = 0;
+  current0El.textContent = currentScore;
+
+  // switch the player when hold button clicked
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  currentScore = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+
+  // Color shade change
+  player0El.classList.toggle('player--active');
+  player1El.classList.toggle('player--active');
+});
